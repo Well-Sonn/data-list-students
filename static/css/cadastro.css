@@ -1,0 +1,133 @@
+/* Resetando margens e preenchimentos para todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Estilizando o corpo da página */
+body {
+    background-color: #f0f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Container que envolve todo o formulário */
+.container {
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 30px;  /* Reduzindo o padding para tornar a caixa mais compacta */
+    width: 100%;
+    max-width: 600px;  /* Ajuste no tamanho máximo para ficar mais compacto */
+    text-align: center;
+}
+
+/* Título do formulário */
+.container h1 {
+    color: #214ca8;
+    font-size: 24px;  /* Reduzindo o tamanho do título */
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Estilizando o formulário */
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilizando os grupos de campos */
+.form-group {
+    margin-bottom: 15px;  /* Reduzindo o espaçamento entre os campos */
+    text-align: left;
+}
+
+/* Estilizando os rótulos (labels) */
+.form-group label {
+    font-size: 14px;  /* Ajustando o tamanho da fonte dos labels */
+    color: #0f0f0f;
+    margin-bottom: 6px;  /* Diminui o espaçamento abaixo dos rótulos */
+    display: block;
+}
+
+/* Estilizando os campos de entrada de texto e número */
+.form-group input[type="number"], .form-group select {
+    width: 100%;
+    padding: 10px;  /* Reduzindo o padding dentro dos campos */
+    font-size: 14px;  /* Ajustando o tamanho da fonte dentro dos campos */
+    border: 1px solid #0e004d;
+    border-radius: 8px;  /* Menor arredondamento nas bordas */
+    background-color: #e3f2fd;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="number"]:focus, .form-group select:focus {
+    border-color: #214ca8;
+    box-shadow: 0 0 8px rgba(14, 14, 14, 0.3);
+}
+
+/* Estilizando o botão de envio */
+.submit-btn {
+    width: 48%;
+    padding: 12px;  /* Reduzindo o padding do botão */
+    font-size: 16px;  /* Ajustando o tamanho da fonte */
+    color: #ffffff;
+    background-color: #214ca8;
+    border: none;
+    border-radius: 8px;  /* Menor arredondamento */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-bottom: 10px;  /* Adicionando um pouco de espaçamento entre os botões */
+}
+
+/* Efeito hover no botão de envio */
+.submit-btn:hover {
+    background-color: #02213d;
+}
+
+/* Estilizando o botão de voltar */
+.back-btn {
+    width: 48%;
+    padding: 12px;  /* Reduzindo o padding do botão */
+    font-size: 16px;  /* Ajustando o tamanho da fonte */
+    color: #ffffff;
+    background-color: #ff6f61;
+    border: none;
+    border-radius: 8px;  /* Menor arredondamento */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Efeito hover no botão de voltar */
+.back-btn:hover {
+    background-color: #e65c50;
+}
+
+/* Tornando o formulário responsivo */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        width: 100%;
+    }
+    
+    .form-group input[type="number"], .form-group select {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .submit-btn, .back-btn {
+        font-size: 16px;
+        padding: 12px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

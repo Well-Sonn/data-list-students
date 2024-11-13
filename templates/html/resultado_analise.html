@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Análise</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado da Análise</h1>
+        <p>{{ resultado }}</p>
+        <form action="{{ url_for('confirmar_adicao') }}" method="post">
+            {% for key, value in aluno.items() %}
+                <input type="hidden" name="{{ key }}" value="{{ value }}">
+            {% endfor %}
+            <div class="form-group button-group">
+                <button type="submit" class="submit-btn">Confirmar Adição</button>
+                <a href="{{ url_for('nova_analise') }}" class="back-btn">Nova Análise</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

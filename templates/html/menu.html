@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Ações</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/acesso.css') }}">
+</head>
+<body>
+    <h1>Escolha uma Opção</h1>
+    <button class="btn" onclick="location.href='{{ url_for('dashboards') }}'">DASHBOARDS</button>
+    <button class="btn" onclick="location.href='{{ url_for('nova_analise') }}'">NOVA ANÁLISE</button>
+</body>
+</html>
