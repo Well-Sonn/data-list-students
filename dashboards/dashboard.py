@@ -34,7 +34,7 @@ scatter_fig = px.scatter(
     hover_data=["ID", "Nível de Satisfação com o Curso"],
     title="Relação entre Desempenho Acadêmico e Frequência"
 )
-st.plotly_chart(scatter_fig)
+st.plotly_chart(scatter_fig, key="scatter_fig1")
 
 # 2. Gráfico de Barras: Contagem de Abandono por Histórico de Reprovações
 st.header("Contagem de Abandono por Histórico de Reprovações")
@@ -45,7 +45,7 @@ abandono_histogram = px.histogram(
     barmode="group",
     title="Distribuição de Abandono por Histórico de Reprovações"
 )
-st.plotly_chart(abandono_histogram)
+st.plotly_chart(abandono_histogram, key="abandono_histogram")
 
 # 3. Gráfico de Pizza: Distribuição do Nível de Satisfação com o Curso
 st.header("Distribuição do Nível de Satisfação com o Curso")
@@ -54,7 +54,7 @@ satisfacao_pie = px.pie(
     names="Nível de Satisfação com o Curso",
     title="Distribuição do Nível de Satisfação com o Curso entre Alunos"
 )
-st.plotly_chart(satisfacao_pie)
+st.plotly_chart(satisfacao_pie, key="satisfacao_pie")
 
 # 4. Gráfico de Dispersão: Desempenho Acadêmico Médio por Uso de Recursos e Frequência
 st.header("Desempenho Acadêmico Médio por Uso de Recursos e Frequência")
@@ -85,7 +85,7 @@ scatter_fig2 = px.scatter(
     color="Abandono",
     title="Desempenho Acadêmico Médio por Uso de Recursos e Frequência"
 )
-st.plotly_chart(scatter_fig2)
+st.plotly_chart(scatter_fig2, key="scatter_fig2")
 
 # 5. Gráfico de Barras: Condição Socioeconômica vs. Status de Emprego
 st.header("Condição Socioeconômica vs. Status de Emprego")
@@ -96,16 +96,4 @@ socio_emprego_bar = px.bar(
     barmode="group",
     title="Distribuição de Condição Socioeconômica por Status de Emprego"
 )
-st.plotly_chart(socio_emprego_bar)
-
-# Layout de colunas para os gráficos
-col1, col2 = st.columns(2)
-
-with col1:
-    st.plotly_chart(scatter_fig)
-    st.plotly_chart(satisfacao_pie)
-    st.plotly_chart(socio_emprego_bar)
-
-with col2:
-    st.plotly_chart(abandono_histogram)
-    st.plotly_chart(scatter_fig2)
+st.plotly_chart(socio_emprego_bar, key="socio_emprego_bar")
