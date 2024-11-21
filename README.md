@@ -44,8 +44,32 @@ A aplicação utiliza as seguintes bibliotecas e ferramentas:
 
 ---
 
-## Configuração do Ambiente  
-1. **Clone o repositório**:  
-   ```bash
-   git clone https://github.com/seu_usuario/projeto-evasao-academica.git
-   cd projeto-evasao-academica
+## Configuração do Ambiente 
+1. Clonar ou repositório : 
+2. Crie e ative um ambiente virtual : 
+   python3 -m venv venv 
+   source venv/bin/activate   # Para Linux/Mac 
+   venv\Scripts\activate      # Para Windows 
+3. Instalar as dependências : 
+   pip install -r requirements.txt 
+
+## Estrutura do Projeto 
+![image](https://github.com/user-attachments/assets/62c7ff50-88c2-4dbe-96fd-ad378ae098a5)
+
+
+## Rotas do Flask 
+![image](https://github.com/user-attachments/assets/8b1c4992-c120-4ac2-a152-db461ad5c347)
+
+
+## Executando a Aplicação 
+1. Iniciar o servidor Flask : 
+   python main.py 
+2. Abra os Dashboards com Streamlit : 
+   streamlit run dashboards/dashboard.py
+
+## Exemplo de uso 
+1. Acesse a página inicial ( /) e clique em INICIAR . 
+2. No menu, selecione NOVA ANÁLISE para adicionar um aluno. 
+3. Preencha o formulário com os dados do aluno e clique em Analisar . 
+4. Visualize a probabilidade de evasão e confirme a adição do aluno. 
+5. Para remover um aluno, vá para DELETAR DADO , pesquise pelo ID e confirme a exclusão.
