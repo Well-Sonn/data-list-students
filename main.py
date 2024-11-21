@@ -46,7 +46,7 @@ def adicionar_aluno():
     df['Abandono'] = le_abandono.fit_transform(df['Abandono'])
 
     # Separar características e rótulo
-    X = df.drop(columns=['ID', 'Abandono'])
+    X = df[['Desempenho Acadêmico', 'Histórico de Reprovações', 'Frequência (%)', 'Uso de Recursos Institucionais (%)', 'Condição Socioeconômica', 'Status de Emprego', 'Nível de Satisfação com o Curso']]
     y = df['Abandono']
 
     # Dividir os dados em conjuntos de treino e teste
@@ -76,11 +76,11 @@ def adicionar_aluno():
 
     previsao = model.predict(novo_aluno)[0]
     resultado = "ESSE ALUNO É PASSIVEL DE EVASAO" if previsao == 1 else "ESSE ALUNO NAO É PASSIVEL DE EVASAO"
-    
+
     # Adicionar ID e previsão ao novo aluno
     novo_aluno['ID'] = df['ID'].max() + 1
     novo_aluno['Abandono'] = 'sim' if previsao == 1 else 'nao'
-   
+
     return render_template('html/resultado_analise.html', resultado=resultado, aluno=novo_aluno.to_dict(orient='records')[0])
 
 @app.route('/confirmar_adicao', methods=['POST'])
@@ -104,7 +104,31 @@ def confirmar_adicao():
 
     # Salvar o DataFrame atualizado no arquivo CSV
     df.to_csv("dataListStudent.csv", index=False, sep=",", decimal=".")
-    return redirect(url_for('menu'))
+    
+    # Renderizar a página de confirmação com o ID do aluno
+    return render_template('html/confirmacao_adicao.html', aluno_id=aluno['ID'])
+
+@app.route('/deletar_aluno')
+def deletar_aluno():
+    return render_template('html/deletar_aluno.html')
+
+@app.route('/pesquisar_aluno', methods=['POST'])
+def pesquisar_aluno():
+    aluno_id = int(request.form['aluno_id'])
+    df = pd.read_csv("dataListStudent.csv", sep=",", decimal=".")
+    aluno = df[df['ID'] == aluno_id].to_dict(orient='records')
+    if aluno:
+        return render_template('html/resultado_pesquisa.html', aluno=aluno[0])
+    else:
+        return render_template('html/resultado_pesquisa.html', aluno=None, mensagem="Aluno não encontrado.")
+
+@app.route('/confirmar_delecao', methods=['POST'])
+def confirmar_delecao():
+    aluno_id = int(request.form['aluno_id'])
+    df = pd.read_csv("dataListStudent.csv", sep=",", decimal=".")
+    df = df[df['ID'] != aluno_id]
+    df.to_csv("dataListStudent.csv", index=False, sep=",", decimal=".")
+    return render_template('html/delecao_sucesso.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

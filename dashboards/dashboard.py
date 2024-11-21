@@ -6,7 +6,7 @@ import plotly.express as px
 df = pd.read_csv("dataListStudent.csv", sep=",", decimal=".")
 
 # Título da aplicação
-st.title("Dashboards Interativos - Análise de Evasão Acadêmica")
+st.title("Análise de Evasão Acadêmica")
 
 # 1. Gráfico de Dispersão: Desempenho Acadêmico vs. Frequência
 st.header("Desempenho Acadêmico vs. Frequência")
@@ -56,7 +56,7 @@ satisfacao_pie = px.pie(
 )
 st.plotly_chart(satisfacao_pie)
 
-# 4. Gráfico de Linha: Desempenho Acadêmico Médio por Uso de Recursos e Frequência
+# 4. Gráfico de Dispersão: Desempenho Acadêmico Médio por Uso de Recursos e Frequência
 st.header("Desempenho Acadêmico Médio por Uso de Recursos e Frequência")
 uso_recursos_min, uso_recursos_max = st.slider(
     "Intervalo de Uso de Recursos Institucionais (%)",
@@ -78,11 +78,34 @@ filtered_df2 = df[
     (df["Frequência (%)"] <= frequencia_max)
 ]
 
-line_fig = px.line(
+scatter_fig2 = px.scatter(
     filtered_df2,
     x="Uso de Recursos Institucionais (%)",
     y="Desempenho Acadêmico",
     color="Abandono",
     title="Desempenho Acadêmico Médio por Uso de Recursos e Frequência"
 )
-st.plotly_chart(line_fig)
+st.plotly_chart(scatter_fig2)
+
+# 5. Gráfico de Barras: Condição Socioeconômica vs. Status de Emprego
+st.header("Condição Socioeconômica vs. Status de Emprego")
+socio_emprego_bar = px.bar(
+    df,
+    x="Condição Socioeconômica",
+    color="Status de Emprego",
+    barmode="group",
+    title="Distribuição de Condição Socioeconômica por Status de Emprego"
+)
+st.plotly_chart(socio_emprego_bar)
+
+# Layout de colunas para os gráficos
+col1, col2 = st.columns(2)
+
+with col1:
+    st.plotly_chart(scatter_fig)
+    st.plotly_chart(satisfacao_pie)
+    st.plotly_chart(socio_emprego_bar)
+
+with col2:
+    st.plotly_chart(abandono_histogram)
+    st.plotly_chart(scatter_fig2)

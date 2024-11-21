@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Pesquisa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado da Pesquisa</h1>
+        {% if aluno %}
+            <p>ID: {{ aluno.ID }}</p>
+            <p>Desempenho Acadêmico: {{ aluno['Desempenho Acadêmico'] }}</p>
+            <p>Histórico de Reprovações: {{ aluno['Histórico de Reprovações'] }}</p>
+            <p>Frequência (%): {{ aluno['Frequência (%)'] }}</p>
+            <p>Uso de Recursos Institucionais (%): {{ aluno['Uso de Recursos Institucionais (%)'] }}</p>
+            <p>Condição Socioeconômica: {{ aluno['Condição Socioeconômica'] }}</p>
+            <p>Status de Emprego: {{ aluno['Status de Emprego'] }}</p>
+            <p>Nível de Satisfação com o Curso: {{ aluno['Nível de Satisfação com o Curso'] }}</p>
+            <p>Abandono: {{ aluno['Abandono'] }}</p>
+            <form action="{{ url_for('confirmar_delecao') }}" method="post">
+                <input type="hidden" name="aluno_id" value="{{ aluno.ID }}">
+                <div class="form-group button-group">
+                    <button type="submit" class="submit-btn">Deletar</button>
+                    <a href="{{ url_for('deletar_aluno') }}" class="back-btn">Voltar</a>
+                </div>
+            </form>
+        {% else %}
+            <p>{{ mensagem }}</p>
+            <a href="{{ url_for('deletar_aluno') }}" class="back-btn">Voltar</a>
+        {% endif %}
+    </div>
+</body>
+</html>

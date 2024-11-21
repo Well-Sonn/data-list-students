@@ -131,3 +131,44 @@ body {
         margin-bottom: 10px;
     }
 }
+
+/* Estilizando o botão de envio */
+.submit-btn {
+    width: 48%;
+    padding: 12px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #214ca8;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* Efeito hover no botão de envio */
+.submit-btn:hover {
+    background-color: #02213d;
+}
+
+/* Estilizando o botão de voltar */
+.back-btn {
+    width: 48%;
+    padding: 12px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #ff6f61;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Efeito hover no botão de voltar */
+.back-btn:hover {
+    background-color: #e65c50;
+}
